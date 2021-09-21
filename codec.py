@@ -1,3 +1,9 @@
+def isBin(string : str) -> bool:
+    for s in string:
+        if s not in ['1', '0', '.']:
+            return False
+    return True
+
 def text2bin(string : str) -> str:
     res = ""
     for s in string:
@@ -22,14 +28,10 @@ def main():
 
         if string == "exit":
             break
-        
-        try:
-            action, message = string.split(' ', 1)
-            if action == "code":
-                print(text2bin(message))
-            if action == "decode":
-                print(bin2text(message))
-        except:
-            print("Ввел хуйню")
-            
+
+        if isBin(string):
+            print("Расшифровано: {0}\n".format(bin2text(string)))
+        else:
+            print("Зашифровано:\n{0}\n".format(text2bin(string)))
+
 main()
